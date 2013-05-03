@@ -1,9 +1,9 @@
 package easter.challenge;
 
-import com.sun.tools.javac.util.Pair;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.internal.collections.Pair;
 
 import java.util.Arrays;
 import java.util.List;

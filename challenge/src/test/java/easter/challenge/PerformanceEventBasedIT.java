@@ -1,12 +1,12 @@
 package easter.challenge;
 
 import com.google.common.base.Stopwatch;
-import com.sun.tools.javac.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.internal.collections.Pair;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

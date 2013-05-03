@@ -1,8 +1,8 @@
 package easter.challenge;
 
 import com.google.common.collect.Lists;
-import com.sun.tools.javac.util.Pair;
 import org.testng.Assert;
+import org.testng.internal.collections.Pair;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -34,19 +34,19 @@ public class MaxUsersLoggedInEventBased {
         int currentSessions = 0;
         List<Integer> maxLoadInterval = Lists.newArrayList();
         for(Pair<Integer,EventType> event:usage) {
-            switch (event.snd) {
+            switch (event.second()) {
                 case IN :
                     currentSessions++;
                     if(currentSessions > maxUsers) {
                         maxUsers = currentSessions;
                         maxLoadInterval.clear();
-                        maxLoadInterval.add(event.fst);
+                        maxLoadInterval.add(event.first());
                     }
                     break;
                 case OUT:
                     if(currentSessions == maxUsers) {
                         if(maxLoadInterval.size() < 2) {
-                            maxLoadInterval.add(event.fst);
+                            maxLoadInterval.add(event.first());
                         }
                     }
                     currentSessions--;
@@ -66,9 +66,9 @@ public class MaxUsersLoggedInEventBased {
         Assert.assertTrue(intervals != null && intervals.size() > 0, "Interval list is null or empty.");
         List<Pair<Integer,EventType>> result = Lists.newArrayList();
         for(Pair<Integer,Integer> interval:intervals) {
-            Assert.assertTrue(interval.fst <= interval.snd, "Logout time is before login time.");
-            result.add(new Pair<Integer, EventType>(interval.fst, EventType.IN));
-            result.add(new Pair<Integer, EventType>(interval.snd, EventType.OUT));
+            Assert.assertTrue(interval.first() <= interval.second(), "Logout time is before login time.");
+            result.add(new Pair<Integer, EventType>(interval.first(), EventType.IN));
+            result.add(new Pair<Integer, EventType>(interval.second(), EventType.OUT));
         }
         return sortEvents(result);
     }
@@ -83,9 +83,9 @@ public class MaxUsersLoggedInEventBased {
             @Override
             public int compare(Pair<Integer, EventType> event1, Pair<Integer,
                     EventType> event2) {
-                int fstCompare = event1.fst.compareTo(event2.fst);
+                int fstCompare = event1.first().compareTo(event2.first());
                 if (fstCompare == 0) {
-                    return event1.snd.compareTo(event2.snd);
+                    return event1.second().compareTo(event2.second());
                 } else {
                     return fstCompare;
                 }

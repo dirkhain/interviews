@@ -3,11 +3,11 @@ package easter.challenge;
 import com.google.common.collect.Lists;
 import com.google.common.collect.SortedMultiset;
 import com.google.common.collect.TreeMultiset;
-import com.sun.tools.javac.util.Pair;
 import easter.profiler.ObjectSizeProfiler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.internal.collections.Pair;
 
 import java.lang.instrument.Instrumentation;
 import java.util.Collections;
@@ -45,8 +45,8 @@ public class MaxUsersLoggedIn {
         int count = 0;
         while(intervals.hasNext()) {
             currentInterval = intervals.next();
-            login = currentInterval.fst;
-            logout = currentInterval.snd;
+            login = currentInterval.first();
+            logout = currentInterval.second();
             Assert.assertTrue(login <= logout, "Logout time is before login time.");
             //check if sessions closed in between logins
             while(logouts.size() > 0 && logouts.firstEntry().getElement() < login) {
@@ -84,9 +84,9 @@ public class MaxUsersLoggedIn {
         Collections.sort(events, new Comparator<Pair<Integer, Integer>>() {
             @Override
             public int compare(Pair<Integer, Integer> event1, Pair<Integer, Integer> event2) {
-                int fstCompare = event1.fst.compareTo(event2.fst);
+                int fstCompare = event1.first().compareTo(event2.first());
                 if (fstCompare == 0) {
-                    return event1.snd.compareTo(event2.snd);
+                    return event1.second().compareTo(event2.second());
                 } else {
                     return fstCompare;
                 }
