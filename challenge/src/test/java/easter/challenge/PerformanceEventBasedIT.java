@@ -20,9 +20,9 @@ public class PerformanceEventBasedIT {
         return new Object[][] {
             {500000},   // 1s
             {1000000},  // 2s
-            {10000000}, // 35s -> degradation starts
-            {20000000}, // 72s
-            {40000000}, // 167s
+//            {10000000}, // 35s -> degradation starts
+//            {20000000}, // 72s
+//            {40000000}, // 167s
         };
     }
 

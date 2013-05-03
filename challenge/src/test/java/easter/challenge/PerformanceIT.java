@@ -22,8 +22,8 @@ public class PerformanceIT {
         return new Object[][] {
             {1000000},
             {5000000},  //40s
-            {10000000}, //80s
-            {20000000}, //175s -> degradation start
+//            {10000000}, //80s
+//            {20000000}, //175s -> degradation start
 //            {40000000}, //520s
 //            {60000000}, //1200s = 20min
 //            {70000000}, //16000s = 4.5h -> steep degradation
