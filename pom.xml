@@ -11,7 +11,7 @@
         <module>profiler</module>
         <module>challenge</module>
     </modules>
-
+ 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <testng-version>6.8</testng-version>
