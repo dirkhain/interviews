@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <testng-version>6.8</testng-version>
         <guava-version>11.0.2</guava-version>
-        <slf4j-version>1.7.3</slf4j-version>
+        <slf4j-version>2.0.12</slf4j-version>
     </properties>
 
     <build>
